@@ -9,14 +9,14 @@ fenetreLargeur = 720
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
-fond = pygame.image.load("background1.png")
+fond = pygame.image.load("assets\background1.png")
 fond = pygame.transform.scale(fond,(fenetreHauteur, fenetreLargeur))
 
 class player():
     def __init__(self):
         self.co_x = 0
         self.score = 0
-        self.skin = pygame.image.load("panier1.png")
+        self.skin = pygame.image.load("assets\panier1.png")
         self.speed = 5
     def move_left(self):
         self.co_x -= self.speed
@@ -36,7 +36,7 @@ class apple():
         self.start = False
         self.id = id
         pygame.time.set_timer(id, self.timer)    
-        self.skin = pygame.image.load("apple1.png")
+        self.skin = pygame.image.load("assets\apple1.png")
         self.skin = pygame.transform.scale(self.skin,(100, 100))
         self.not_been_touched = True
         self.rectPomme = None
