@@ -26,13 +26,13 @@ class player():
 
 class apple():
     def __init__(self,id):
-        self.co_x = random.randint(0,1280)
+        self.co_x = random.randint(0,1280) 
         self.co_y = -15
-        self.speed = 2
+        self.speed = 2    
         self.timer = random.randint(1,5000)
         self.start = False
         self.id = id
-        pygame.time.set_timer(id, self.timer)
+        pygame.time.set_timer(id, self.timer)    
         self.skin = pygame.image.load("apple1.png")
         self.skin = pygame.transform.scale(self.skin,(100, 100))
         self.not_been_touched = True
@@ -46,7 +46,8 @@ class apple():
     def collision(self):
         if self.start:
             self.collide = rectPlayer.collidepoint(self.co_x,self.co_y)
-            if self.collide: player1.gain_score(1,self)
+            if self.collide: 
+                player1.gain_score(1,self)
             print(player1.score)
             if self.not_been_touched == True:
                 self.afficher()
