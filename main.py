@@ -29,13 +29,9 @@ class apple():
     def __init__(self):
         self.co_x = random.randint(0,1280) 
         self.co_y = -15
-        self.speed = 2    
-        self.timer = random.randint(1,5000)
-        self.start = False
+        self.speed = 2
         self.skin = pygame.image.load("assets/apple1.png")
         self.skin = pygame.transform.scale(self.skin,(100, 100))
-        self.rectPomme = None
-        self.collide = False
     
     def tomber(self):
         self.co_y += self.speed
@@ -48,8 +44,6 @@ class apple():
         if self.collide: 
             player1.gain_score(1)
             return self
-            #pomme.remove(self)
-        print(player1.score)
     def afficher(self):
         self.rectPomme = self.skin.get_rect()   #affichage Pomme
         self.rectPomme.center = self.co_x,self.co_y
@@ -77,6 +71,7 @@ while running:
          #if event.type == pygame.USEREVENT:
 
     création_pomme()
+    print(len(pomme))
     # fill the screen with a color to wipe away anything from last frame
     screen.blit(fond,(0,0))
 
@@ -90,7 +85,7 @@ while running:
         if apple_suppr_add != None:
             apple_suppr.append(apple_suppr_add)
     for j in range(len(apple_suppr)):
-        pomme.remove(pomme[j])
+        pomme.remove(apple_suppr[j])
 
 
     keys = pygame.key.get_pressed()
