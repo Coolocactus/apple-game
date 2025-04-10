@@ -1,6 +1,8 @@
 import pygame
 import time
 import random
+
+
 pygame.init()
 fenetreHauteur = 1280
 fenetreLargeur = 720
@@ -9,6 +11,7 @@ clock = pygame.time.Clock()
 running = True
 fond = pygame.image.load("background1.png")
 fond = pygame.transform.scale(fond,(fenetreHauteur, fenetreLargeur))
+
 class player():
     def __init__(self):
         self.co_x = 0
@@ -38,6 +41,7 @@ class apple():
         self.not_been_touched = True
         self.rectPomme = None
         self.collide = False
+    
     def tomber(self):
         self.co_y += self.speed
         if self.co_y > 720:
@@ -58,6 +62,7 @@ class apple():
         self.rectPomme.center = self.co_x,self.co_y
         screen.blit(self.skin,self.rectPomme)
         self.tomber()
+        
 player1 = player()
 pomme1 = apple(1)
 pomme2 = apple(2)
@@ -67,6 +72,7 @@ pomme5 = apple(5)
 pomme6 = apple(6)
 pomme7 = apple(7)
 pomme8 = apple(8)
+
 while running:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
