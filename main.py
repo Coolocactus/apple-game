@@ -51,45 +51,46 @@ class apple():
         self.tomber()
 
 pomme = []
-def création_pomme():
+def création_pomme(): #create an apple with a one-in-a-hundred chance
     global pomme
     chance_création = random.randint(1,100)
     if chance_création == 1:
         pomme1 = apple()
         pomme.append(pomme1)
             
-player1 = player()
+player1 = player() #creation of the player 
 
-
+#main programe
 while running:
-    # poll for events
     # pygame.QUIT event means the user clicked X to close your window
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
         
-         #if event.type == pygame.USEREVENT:
+        
 
     création_pomme()
     print(len(pomme))
     # fill the screen with a color to wipe away anything from last frame
     screen.blit(fond,(0,0))
 
-    rectPlayer = player1.skin.get_rect()   # Panier
+    
+    rectPlayer = player1.skin.get_rect()   # player actualisation
     rectPlayer.center = player1.co_x,600
     screen.blit(player1.skin,rectPlayer)
     
-    apple_suppr = []
-    for i in range(len(pomme)):
-        apple_suppr_add = pomme[i].collision()
-        if apple_suppr_add != None:
-            apple_suppr.append(apple_suppr_add)
-    for j in range(len(apple_suppr)):
-        pomme.remove(apple_suppr[j])
-
-
-    keys = pygame.key.get_pressed()
     
+    apple_suppr = [] #list of apple to remove
+    for i in range(len(pomme)): 
+        apple_suppr_add = pomme[i].collision() #return the name of the apple if the apple touch the player
+        if apple_suppr_add != None:
+            apple_suppr.append(apple_suppr_add) #add the apple to the list 
+    for j in range(len(apple_suppr)):
+        pomme.remove(apple_suppr[j])#pourquoi ne pas le suppreimer directement au dessue ????
+
+
+    keys = pygame.key.get_pressed() #detecte the imput 
+    #movement 
     if keys[pygame.K_q]:
         player1.move_left()
     if keys[pygame.K_d]:
