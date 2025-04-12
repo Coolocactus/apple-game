@@ -86,7 +86,7 @@ while running:
         if apple_suppr_add != None:
             apple_suppr.append(apple_suppr_add) #add the apple to the list 
     for j in range(len(apple_suppr)):
-        pomme.remove(apple_suppr[j])#pourquoi ne pas le suppreimer directement au dessue ????
+        pomme.remove(apple_suppr[j])#pourquoi ne pas le suppreimer directement au dessue ????  # Parce que sinon index out of range vu que ça regarde le nombre de pomme au début
 
 
     keys = pygame.key.get_pressed() #detecte the imput 
