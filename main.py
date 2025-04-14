@@ -1,4 +1,4 @@
-simport pygame
+import pygame
 import time
 import random
 
@@ -6,24 +6,28 @@ import random
 timer = time.time()
 
 pygame.init()
-fenetreHauteur = 1280
-fenetreLargeur = 720
-screen = pygame.display.set_mode((1280, 720))
+fenetreLargeur = 1280
+fenetreHauteur = 720
+screen = pygame.display.set_mode((fenetreLargeur, fenetreHauteur))
 clock = pygame.time.Clock()
 running = True
-fond = pygame.image.load("assets/background1.png")
-fond = pygame.transform.scale(fond,(fenetreHauteur, fenetreLargeur))
+fond = pygame.image.load("apple-game-1.0.1-Alpha/assets/background1.png")
+fond = pygame.transform.scale(fond,(fenetreLargeur, fenetreHauteur))
 
 class player():
     def __init__(self):
         self.co_x = 0
         self.score = 0
-        self.skin = pygame.image.load("assets/panier1.png")
-        self.speed = 5
+        self.skin = pygame.image.load("apple-game-1.0.1-Alpha/assets/panier1.png")
+        self.speed = 10
     def move_left(self):
         self.co_x -= self.speed
+        if self.co_x <= 0:
+            self.co_x = fenetreLargeur
     def move_right(self):
         self.co_x += self.speed
+        if self.co_x >= fenetreLargeur  :
+            self.co_x = 0
     def gain_score(self,how_much):
         self.score += how_much
 
@@ -31,8 +35,8 @@ class apple():
     def __init__(self):
         self.co_x = random.randint(0,1280) 
         self.co_y = -15
-        self.speed = 2
-        self.skin = pygame.image.load("assets/apple1.png")
+        self.speed = 4
+        self.skin = pygame.image.load("apple-game-1.0.1-Alpha/assets/apple1.png")
         self.skin = pygame.transform.scale(self.skin,(100, 100))
     
     def tomber(self):
@@ -58,7 +62,7 @@ class bomb(apple):
         self.co_x = random.randint(0,1280) 
         self.co_y = -15
         self.speed = 2
-        self.skin = pygame.image.load("assets/bomb.png")
+        self.skin = pygame.image.load("apple-game-1.0.1-Alpha/assets/bomb.png")
         self.skin = pygame.transform.scale(self.skin,(200, 100))
     
     def collision(self):
@@ -102,7 +106,7 @@ while running:
             running = False
         
         
-    font = pygame.font.Font("NotoSans-Bold.ttf", 30)
+    font = pygame.font.Font("apple-game-1.0.1-Alpha/assets/NotoSans-Bold.ttf", 30)
     afficher = font.render(f"score: {player1.score}", 1,(0,0,0))
     
 
